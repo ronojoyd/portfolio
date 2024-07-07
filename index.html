@@ -1,37 +1,38 @@
+<!-- HTML -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ronojoy's Portfolio</title>
-    <style></style>
-</head>
-<body>
-    <div id="menu-bar">
-        <span class="logo">Ronojoy's Desktop</span>
-        <span class="time" id="current-time"></span>
-    </div>
-
-    <div id="desktop">
-        <div class="desktop-icon" onclick="openWindow('resume')">
-            <img src="/api/placeholder/60/60" alt="Resume">
-            <span>Resume</span>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ronojoy's Portfolio</title>
+        <style></style>
+    </head>
+    <body>
+        <div id="menu-bar">
+            <span class="logo">Ronojoy's Desktop</span>
+            <span class="time" id="current-time"></span>
         </div>
-        <div class="desktop-icon" onclick="openWindow('projects')">
-            <img src="/api/placeholder/60/60" alt="Projects">
-            <span>Projects</span>
-        </div>
-        <div class="desktop-icon" onclick="openWindow('about')">
-            <img src="/api/placeholder/60/60" alt="About Me">
-            <span>About Me</span>
-        </div>
-    </div>
 
-    <div id="dock">
-        <img src="/api/placeholder/50/50" alt="GitHub" class="dock-icon" onclick="window.open('')">
-        <img src="/api/placeholder/50/50" alt="LinkedIn" class="dock-icon" onclick="window.open('')">
-    </div>
+        <div id="desktop">
+            <div class="desktop-icon" onclick="openWindow('resume')">
+                <img src="/api/placeholder/60/60" alt="Resume">
+                <span>Resume</span>
+            </div>
+            <div class="desktop-icon" onclick="openWindow('projects')">
+                <img src="/api/placeholder/60/60" alt="Projects">
+                <span>Projects</span>
+            </div>
+            <div class="desktop-icon" onclick="openWindow('about')">
+                <img src="/api/placeholder/60/60" alt="About Me">
+                <span>About Me</span>
+            </div>
+        </div>
 
-    <script></script>
-</body>
+        <div id="dock">
+            <img src="/api/placeholder/50/50" alt="GitHub" class="dock-icon" onclick="window.open('https://github.com/ronojoyd', '_blank')">
+            <img src="/api/placeholder/50/50" alt="LinkedIn" class="dock-icon" onclick="window.open('https://www.linkedin.com/in/ronojoyd/', '_blank')">
+        </div>
+
+        <script></script>
+    </body>
 </html>
