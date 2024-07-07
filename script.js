@@ -64,8 +64,7 @@ function closeWindow(closeButton) {
 function getWindowContent(contentType) {
     switch(contentType) {
         case 'resume':
-            return `<h2>My Resume</h2>
-                    <p>Education: Third-Year Student at Georgia Tech</p>`;
+            return `<p>Third-Year Student at Georgia Tech</p>`;
         case 'projects':
             return `<h2>My Projects</h2>`;
         case 'about':
