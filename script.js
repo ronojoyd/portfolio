@@ -6,7 +6,13 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime();
 
-// Window management
+/* Add fade-in effect when webpage loads for the first time
+window.addEventListener('load', function() {
+    document.body.style.opacity = '1';
+});
+*/
+
+// Handling window management
 let zIndex = 1;
 
 function openWindow(contentType) {
@@ -63,8 +69,7 @@ function getWindowContent(contentType) {
         case 'projects':
             return `<h2>My Projects</h2>`;
         case 'about':
-            return `<h2>About Me</h2>
-                    <p>Ronojoy Dutta</p>`;
+            return `<h2>About Me</h2>`;
         default:
             return 'Content not found';
     }
