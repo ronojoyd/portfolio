@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ronojoy's Portfolio</title>
-        <style></style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div id="menu-bar">
@@ -15,24 +15,36 @@
 
         <div id="desktop">
             <div class="desktop-icon" onclick="openWindow('resume')">
-                <img src="/api/placeholder/60/60" alt="Resume">
+                <img src="https://cdn.icon-icons.com/icons2/2963/PNG/512/macos_big_sur_download_folder_icon_186042.png" alt="Resume">
                 <span>Resume</span>
             </div>
             <div class="desktop-icon" onclick="openWindow('projects')">
-                <img src="/api/placeholder/60/60" alt="Projects">
+                <img src="https://cdn.icon-icons.com/icons2/2963/PNG/512/macos_big_sur_download_folder_icon_186042.png" alt="Projects">
                 <span>Projects</span>
             </div>
             <div class="desktop-icon" onclick="openWindow('about')">
-                <img src="/api/placeholder/60/60" alt="About Me">
+                <img src="https://cdn.icon-icons.com/icons2/2963/PNG/512/macos_big_sur_download_folder_icon_186042.png" alt="About Me">
                 <span>About Me</span>
             </div>
         </div>
 
         <div id="dock">
-            <img src="/api/placeholder/50/50" alt="GitHub" class="dock-icon" onclick="window.open('https://github.com/ronojoyd', '_blank')">
-            <img src="/api/placeholder/50/50" alt="LinkedIn" class="dock-icon" onclick="window.open('https://www.linkedin.com/in/ronojoyd/', '_blank')">
+            <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub" class="dock-icon" onclick="window.open('https://github.com/ronojoyd', '_blank')">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="dock-icon" onclick="window.open('https://www.linkedin.com/in/ronojoyd/', '_blank')">
         </div>
 
-        <script></script>
+        <div id="sticky-note" class="window">
+            <div class="window-header">
+                <div class="window-buttons">
+                    <div class="window-button close" onclick="closeStickyNote()"></div>
+                </div>
+                <div class="window-title">Note</div>
+            </div>
+            <div class="window-content">
+                <p>Welcome to the website. Here's some pointers.</p>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
     </body>
 </html>
