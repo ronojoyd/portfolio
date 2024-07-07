@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 
+/* Setting up font(s) */
 .figtree {
   font-family: "Figtree", sans-serif;
   font-optical-sizing: auto;
@@ -196,6 +197,29 @@ body {
     height: auto;
     border-radius: 15px;
     padding-top: 10px;
+}
+
+/* Resume styles */
+.experience {
+    margin-bottom: 20px;
+}
+.job-title {
+    font-weight: bold;
+}
+.company-location {
+    font-style: italic;
+}
+.date-range {
+    font-style: italic;
+    color: #555;
+}
+.responsibilities {
+    margin-top: 10px;
+    list-style-type: none;
+    padding-left: 0;
+}
+.responsibility {
+    margin-bottom: 10px;
 }
 
 /* Responsive styles */

@@ -45,8 +45,8 @@ function openWindow(contentType) {
     document.body.appendChild(window);
 
     // Center the window
-    const windowWidth = 400; // Default width
-    const windowHeight = 300; // Default height
+    const windowWidth = 600; // Default width
+    const windowHeight = 400; // Default height
     window.style.width = `${windowWidth}px`;
     window.style.height = `${windowHeight}px`;
     window.style.left = `${(document.body.clientWidth - windowWidth) / 2}px`;
@@ -64,7 +64,45 @@ function closeWindow(closeButton) {
 function getWindowContent(contentType) {
     switch(contentType) {
         case 'resume':
-            return `<p>Third-Year Student at Georgia Tech</p>`;
+            return `<div class="experience">
+                        <div class="job-title">General Motors (GM), Roswell, GA — Information & Digital Technology Intern</div>
+                        <div class="date-range">MAY 2024 - PRESENT</div>
+                        <ul class="responsibilities">
+                            <li class="responsibility">Implemented automated CI/CD pipelines using GitHub Actions (Bash scripts), streamlining build, test, and deployment processes for a mission-critical manufacturing application, reducing deployment time by nearly 40%.</li>
+                            <li class="responsibility">Supported TomEE server migration by implementing SSH functionality for remote production server access and configuring servers according to team specifications.</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience">
+                        <div class="job-title">General Motors (GM), Roswell, GA — Software Development Intern</div>
+                        <div class="date-range">MAY 2023 - AUG 2023</div>
+                        <ul class="responsibilities">
+                            <li class="responsibility">Developed a Typescript-based game application integrating augmented reality (AR) and social networking features to enhance employee engagement within the company.</li>
+                            <li class="responsibility">Implemented key user functionalities, including secure authentication, profile management, leaderboard ranking with points algorithm, and search, using Angular and Ionic for the frontend, and NoSQL databases with web APIs for the backend.</li>
+                            <li class="responsibility">Collaborated in Agile design sprints, utilizing Figma to design and prototype application features, ensuring alignment with project’s software architecture and development goals.</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience">
+                        <div class="job-title">Richmond Public Defender’s Office, Richmond, VA — Web Dev. Intern</div>
+                        <div class="date-range">JUN 2021 - AUG 2021</div>
+                        <ul class="responsibilities">
+                            <li class="responsibility">Developed a new website for the Public Defender’s office in collaboration with the Chief Public Defender and her team, leading weekly Scrum meetings to gather requirements and ensure alignment with end-user needs.</li>
+                            <li class="responsibility">Redesigned the website with a modern user experience using Bootstrap, and optimized hiring and data collection processes through PHP-based web forms.</li>
+                            <li class="responsibility">Implemented strategies to enhance website functionality, including a custom video interface, and streamlined access to social services and employment opportunities.</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience">
+                        <div class="job-title">Virginia Commonwealth University, Richmond, VA — Research Intern</div>
+                        <div class="date-range">JUN 2019 - JUN 2021</div>
+                        <ul class="responsibilities">
+                            <li class="responsibility">Co-authored 6 published research papers on COVID-19, leveraging Python and advanced machine learning techniques to analyze epidemiological data and inform public health strategies.</li>
+                            <li class="responsibility">Utilized Python for extensive web scraping from 50+ sources and performed robust data preprocessing.</li>
+                            <li class="responsibility">Developed a Python-based linear optimization algorithm for simulating COVID-19 vaccine allocation, optimizing resource distribution across diverse regional parameters, resulting in more efficient distribution strategies.</li>
+                            <li class="responsibility">Implemented a reinforcement learning model in Python to inform policy decisions during COVID-19 lockdowns, balancing public safety measures with economic recovery efforts effectively.</li>
+                        </ul>
+                    </div>`;
         case 'projects':
             return `<h2>My Projects</h2>`;
         case 'about':
