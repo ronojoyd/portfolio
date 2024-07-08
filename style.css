@@ -27,6 +27,21 @@ body {
     flex-direction: column;
 }
 
+/* Music bar styles */
+.spotify-embed {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 40px;
+    right: 20px;
+    width: 500px;
+    height: auto;
+}
+
+iframe {
+    border: none;
+}
+
 /* Menu bar styles */
 #menu-bar {
     background-color: rgba(255, 255, 255, 0.2);
@@ -169,7 +184,7 @@ body {
 /* Sticky note styles */
 #sticky-note {
     position: fixed;
-    top: 40px;
+    top: 135px;
     right: 20px;
     width: 500px;
     height: auto;
