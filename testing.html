@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My macOS Portfolio</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-image: url('images/wallpaper.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Menu bar styles */
+        #menu-bar {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #menu-bar .left {
+            font-weight: bold;
+        }
+
+        /* Desktop styles */
+        #desktop {
+            height: calc(100vh - 70px);
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            grid-gap: 20px;
+            align-content: start;
+        }
+
+        .desktop-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .desktop-icon img {
+            width: 64px;
+            height: 64px;
+        }
+
+        .desktop-icon span {
+            margin-top: 5px;
+            text-align: center;
+            color: white;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Dock styles */
+        #dock {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px 20px 0 0;
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .dock-icon {
+            width: 50px;
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .dock-icon:hover {
+            transform: scale(1.2);
+        }
+
+        /* Window styles */
+        .window {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            min-width: 300px;
+            min-height: 200px;
+            resize: both;
+            overflow: auto;
+        }
+
+        .window-header {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+        }
+
+        .window-title {
+            font-weight: bold;
+        }
+
+        .window-controls span {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-left: 5px;
+            position: relative;
+        }
+
+        .window-close {
+            background-color: #ff5f56;
+        }
+
+        .window-close::before,
+        .window-close::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 2px;
+            background-color: #4d0000;
+            top: 5px;
+            left: 2px;
+        }
+
+        .window-close::before {
+            transform: rotate(45deg);
+        }
+
+        .window-close::after {
+            transform: rotate(-45deg);
+        }
+
+        .window-minimize {
+            background-color: #ffbd2e;
+        }
+
+        .window-maximize {
+            background-color: #27c93f;
+        }
+
+        .window-content {
+            padding: 20px;
+            height: calc(100% - 40px);
+            overflow: auto;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            #desktop {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
+
+            .desktop-icon img {
+                width: 48px;
+                height: 48px;
+            }
+
+            .dock-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="menu-bar">
+        <div class="left">Ronojoy's Desktop</div>
+        <div class="right" id="clock"></div>
+    </div>
+
+    <div id="desktop">
+        <!-- Desktop icons will be added here dynamically -->
+    </div>
+
+    <div id="dock">
+        <!-- Dock icons will be added here dynamically -->
+    </div>
+
+    <script>
+        // Desktop icons data
+        const desktopIcons = [
+            {
+                type: 'file',
+                icon: 'images/file.png',
+                name: 'Resume',
+                content: 'This is my resume content.'
+            },
+            { name: 'Projects', icon: 'images/file.png', type: 'folder', content: 'List of my projects.' },
+            { name: 'Contact', icon: 'images/file.png', type: 'sticky', content: 'My contact information.' }
+        ];
+
+        // Dock icons data
+        const dockIcons = [
+            { name: 'GitHub', icon: 'images/github.png', link: 'https://github.com' },
+            { name: 'LinkedIn', icon: 'images/linkedin.png', link: 'https://linkedin.com' }
+        ];
+
+        // Function to create desktop icons
+        function createDesktopIcons() {
+            const desktop = document.getElementById('desktop');
+            desktopIcons.forEach(icon => {
+                const div = document.createElement('div');
+                div.className = 'desktop-icon';
+                div.innerHTML = `
+                    <img src="${icon.icon}" alt="${icon.name}">
+                    <span>${icon.name}</span>
+                `;
+                div.onclick = () => openWindow(icon);
+                desktop.appendChild(div);
+            });
+        }
+
+        // Function to create dock icons
+        function createDockIcons() {
+            const dock = document.getElementById('dock');
+            dockIcons.forEach(icon => {
+                const img = document.createElement('img');
+                img.src = icon.icon;
+                img.alt = icon.name;
+                img.className = 'dock-icon';
+                img.onclick = () => window.open(icon.link, '_blank');
+                dock.appendChild(img);
+            });
+        }
+
+        // Function to open a window
+        function openWindow(icon) {
+            const window = document.createElement('div');
+            window.className = 'window';
+            window.style.zIndex = getTopZIndex() + 1;
+            window.innerHTML = `
+                <div class="window-header">
+                    <div class="window-title">${icon.name}</div>
+                    <div class="window-controls">
+                        <span class="window-close" onclick="closeWindow(this)"></span>
+                        <span class="window-minimize"></span>
+                        <span class="window-maximize"></span>
+                    </div>
+                </div>
+                <div class="window-content">${icon.content}</div>
+            `;
+            document.body.appendChild(window);
+            centerWindow(window);
+            makeDraggable(window);
+            makeResizable(window);
+            window.addEventListener('mousedown', bringToFront);
+        }
+
+        // Function to center a window
+        function centerWindow(window) {
+            const windowWidth = window.offsetWidth;
+            const windowHeight = window.offsetHeight;
+            const bodyWidth = document.body.clientWidth;
+            const bodyHeight = document.body.clientHeight;
+            window.style.left = `${(bodyWidth - windowWidth) / 2}px`;
+            window.style.top = `${(bodyHeight - windowHeight) / 2}px`;
+        }
+
+        // Function to close a window
+        function closeWindow(closeButton) {
+            closeButton.closest('.window').remove();
+        }
+
+        // Function to make windows draggable
+        function makeDraggable(element) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            element.querySelector('.window-header').onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                element.style.top = (element.offsetTop - pos2) + "px";
+                element.style.left = (element.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+
+        // Function to make windows resizable
+        function makeResizable(element) {
+            const resizer = document.createElement('div');
+            resizer.className = 'resizer';
+            resizer.style.width = '10px';
+            resizer.style.height = '10px';
+            resizer.style.background = 'transparent';
+            resizer.style.position = 'absolute';
+            resizer.style.right = '0';
+            resizer.style.bottom = '0';
+            resizer.style.cursor = 'se-resize';
+            element.appendChild(resizer);
+
+            resizer.addEventListener('mousedown', initResize, false);
+
+            function initResize(e) {
+                window.addEventListener('mousemove', resize, false);
+                window.addEventListener('mouseup', stopResize, false);
+            }
+
+            function resize(e) {
+                element.style.width = (e.clientX - element.offsetLeft) + 'px';
+                element.style.height = (e.clientY - element.offsetTop) + 'px';
+            }
+
+            function stopResize(e) {
+                window.removeEventListener('mousemove', resize, false);
+                window.removeEventListener('mouseup', stopResize, false);
+            }
+        }
+
+        // Function to bring window to front
+        function bringToFront() {
+            this.style.zIndex = getTopZIndex() + 1;
+        }
+
+        // Function to get the highest z-index
+        function getTopZIndex() {
+            return Math.max(
+                ...Array.from(document.querySelectorAll('.window'))
+                    .map(el => parseFloat(window.getComputedStyle(el).zIndex))
+                    .filter(zIndex => !Number.isNaN(zIndex)),
+                0
+            );
+        }
+
+        // Function to update clock
+        function updateClock() {
+            const clock = document.getElementById('clock');
+            const now = new Date();
+            clock.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // Initialize the desktop
+        createDesktopIcons();
+        createDockIcons();
+        setInterval(updateClock, 1000);
+
+        // Open default windows
+        window.onload = () => {
+            openWindow(desktopIcons[0]); // Open Resume by default
+        };
+    </script>
+</body>
+</html>
