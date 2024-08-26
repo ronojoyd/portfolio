@@ -27,6 +27,11 @@ body {
     flex-direction: column;
 }
 
+.image {
+    width: 100%;
+    height: auto;
+}
+
 /* Music bar styles */
 .spotify-embed {
     display: flex;
@@ -184,7 +189,7 @@ iframe {
 /* Sticky note styles */
 #sticky-note {
     position: fixed;
-    top: 135px;
+    top: 40px;
     right: 20px;
     width: 500px;
     height: auto;
