@@ -1,6 +1,3 @@
-// Sets default open windows
-const defaultOpenWindows = ['resume'];
-
 // Update time in menu bar
 function updateTime() {
     const now = new Date();
@@ -8,6 +5,12 @@ function updateTime() {
 }
 setInterval(updateTime, 1000);
 updateTime();
+
+/* Add fade-in effect when webpage loads for the first time
+window.addEventListener('load', function() {
+    document.body.style.opacity = '1';
+});
+*/
 
 // Handling window management
 let zIndex = 1;
@@ -21,7 +24,7 @@ function openWindow(contentType) {
     header.className = 'window-header';
     header.innerHTML = `
         <div class="window-buttons">
-            <div class="window-button close" onclick="closeWindow(this)">×</div>
+            <div class="window-button close" onclick="closeWindow(this)"></div>
             <div class="window-button minimize"></div>
             <div class="window-button maximize"></div>
         </div>
@@ -173,114 +176,7 @@ function bringToFront(element) {
     element.style.zIndex = ++zIndex;
 }
 
-const windowContent = {
-    about: `
-        <h2>About Me</h2>
-    `,
-    resume: `
-        <div class="experience">
-            <div class="job-title">General Motors (GM), Roswell, GA — Information & Digital Technology Intern</div>
-            <div class="date-range">MAY 2024 - PRESENT</div>
-            <ul class="responsibilities">
-                <li class="responsibility">Implemented automated CI/CD pipelines using GitHub Actions (Bash scripts), streamlining build, test, and deployment processes for a mission-critical manufacturing application, reducing deployment time by nearly 40%.</li>
-                <li class="responsibility">Supported TomEE server migration by implementing SSH functionality for remote production server access and configuring servers according to team specifications.</li>
-            </ul>
-        </div>
-
-        <div class="experience">
-            <div class="job-title">General Motors (GM), Roswell, GA — Software Development Intern</div>
-            <div class="date-range">MAY 2023 - AUG 2023</div>
-            <ul class="responsibilities">
-                <li class="responsibility">Developed a Typescript-based game application integrating augmented reality (AR) and social networking features to enhance employee engagement within the company.</li>
-                <li class="responsibility">Implemented key user functionalities, including secure authentication, profile management, leaderboard ranking with points algorithm, and search, using Angular and Ionic for the frontend, and NoSQL databases with web APIs for the backend.</li>
-                <li class="responsibility">Collaborated in Agile design sprints, utilizing Figma to design and prototype application features, ensuring alignment with project’s software architecture and development goals.</li>
-            </ul>
-        </div>
-
-        <div class="experience">
-            <div class="job-title">Richmond Public Defender’s Office, Richmond, VA — Web Dev. Intern</div>
-            <div class="date-range">JUN 2021 - AUG 2021</div>
-            <ul class="responsibilities">
-                <li class="responsibility">Developed a new website for the Public Defender’s office in collaboration with the Chief Public Defender and her team, leading weekly Scrum meetings to gather requirements and ensure alignment with end-user needs.</li>
-                <li class="responsibility">Redesigned the website with a modern user experience using Bootstrap, and optimized hiring and data collection processes through PHP-based web forms.</li>
-                <li class="responsibility">Implemented strategies to enhance website functionality, including a custom video interface, and streamlined access to social services and employment opportunities.</li>
-            </ul>
-        </div>
-
-        <div class="experience">
-            <div class="job-title">Virginia Commonwealth University, Richmond, VA — Research Intern</div>
-            <div class="date-range">JUN 2019 - JUN 2021</div>
-            <ul class="responsibilities">
-                <li class="responsibility">Co-authored 6 published research papers on COVID-19, leveraging Python and advanced machine learning techniques to analyze epidemiological data and inform public health strategies.</li>
-                <li class="responsibility">Utilized Python for extensive web scraping from 50+ sources and performed robust data preprocessing.</li>
-                <li class="responsibility">Developed a Python-based linear optimization algorithm for simulating COVID-19 vaccine allocation, optimizing resource distribution across diverse regional parameters, resulting in more efficient distribution strategies.</li>
-                <li class="responsibility">Implemented a reinforcement learning model in Python to inform policy decisions during COVID-19 lockdowns, balancing public safety measures with economic recovery efforts effectively.</li>
-            </ul>
-        </div>
-    `,
-    projects: `
-        <h2>My Projects</h2>
-    `
-};
-
-function getWindowContent(contentType) {
-    return windowContent[contentType] || 'Content not found';
-}
-
-function openDefaultWindows() {
-    defaultOpenWindows.forEach((windowType, index) => {
-        setTimeout(() => openWindow(windowType), index * 100);
-    });
-}
-
-function createMobileView() {
-    const mobileContent = document.querySelector('.mobile-content');
-    mobileContent.innerHTML = ''; // Clear existing content
-    Object.keys(windowContent).forEach(contentType => {
-        const mobileWindow = document.createElement('div');
-        mobileWindow.className = 'mobile-window';
-        mobileWindow.innerHTML = `
-            <div class="mobile-window-header">
-                <span>${contentType.charAt(0).toUpperCase() + contentType.slice(1)}</span>
-                <button class="mobile-close-button" onclick="closeMobileWindow(this)">×</button>
-            </div>
-            <div class="mobile-window-content">${windowContent[contentType]}</div>
-        `;
-        mobileContent.appendChild(mobileWindow);
-    });
-}
-
-function closeMobileWindow(button) {
-    const window = button.closest('.mobile-window');
-    window.style.animation = 'fadeOut 0.3s';
-    setTimeout(() => {
-        window.remove();
-    }, 300);
-}
-
-function checkMobileView() {
-    if (window.innerWidth <= 768) {
-        document.body.classList.add('mobile-view');
-        createMobileView();
-    } else {
-        document.body.classList.remove('mobile-view');
-        document.querySelector('.mobile-content').innerHTML = '';
-        openDefaultWindows(); // Reopen default windows when switching back to desktop view
-    }
-}
-
-// Initialize
-window.addEventListener('load', () => {
-    updateTime();
-    checkMobileView();
-    if (!document.body.classList.contains('mobile-view')) {
-        openDefaultWindows();
-    }
-});
-
-window.addEventListener('resize', checkMobileView);
-
-// Sticky note functionality
+// Sticky Note functionality
 function closeStickyNote() {
     document.getElementById('sticky-note').style.display = 'none';
 }

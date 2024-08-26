@@ -14,10 +14,6 @@
         </div>
 
         <div id="desktop">
-            <div class="desktop-icon" onclick="openWindow('about')">
-                <img src="images/file.png" alt="About Me">
-                <span>About Me</span>
-            </div>
             <div class="desktop-icon" onclick="openWindow('resume')">
                 <img src="images/file.png" alt="Resume">
                 <span>Resume</span>
@@ -26,6 +22,10 @@
                 <img src="images/file.png" alt="Projects">
                 <span>Projects</span>
             </div>
+            <div class="desktop-icon" onclick="openWindow('about')">
+                <img src="images/file.png" alt="About Me">
+                <span>About Me</span>
+            </div>
         </div>
 
         <div id="dock">
@@ -33,9 +33,7 @@
             <img src="images/linkedin.png" alt="LinkedIn" class="dock-icon" onclick="window.open('https://www.linkedin.com/in/ronojoyd/', '_blank')">
         </div>
 
-        <div class="mobile-content"></div>
-
-        <!--<div id="sticky-note" class="window">
+        <div id="sticky-note" class="window">
             <div class="window-header">
                 <div class="window-buttons">
                     <div class="window-button close" onclick="closeStickyNote()"></div>
@@ -47,13 +45,14 @@
                 <p>It's a work in progress, but we all have to start somewhere, right?</p>
                 <p>This is an interactive website where you can click to view documents, drag and resize app windows, and even check the current local time. I'm continually adding more features, aiming to make this site fun and interesting (maybe, I'll add some music 🎵 using a third-party API).</p>
                 <p>In the meantime, this is a great space to learn more about me, my work experience, and some personal projects I'm currently working on (or have completed).</p>
-                <img src="images/profile.png" alt="Profile photo" class="profile-picture">
+                <!--<img src="images/profile.png" alt="Profile photo" class="profile-picture">-->
             </div>
-        </div>-->
+        </div>
 
-        <!--<div class="spotify-embed">
+        <div class="spotify-embed">
+            <!-- Replace this embed code with the one you get from Spotify -->
             <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="auto" allow="encrypted-media"></iframe>
-        </div>-->
+        </div>
 
         <script src="script.js"></script>
     </body>
