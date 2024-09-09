@@ -46,7 +46,7 @@ function openWindow(contentType) {
 
     // Center the window
     const windowWidth = 600; // Default width
-    const windowHeight = 400; // Default height
+    const windowHeight = 650; // Default height
     window.style.width = `${windowWidth}px`;
     window.style.height = `${windowHeight}px`;
     window.style.left = `${(document.body.clientWidth - windowWidth) / 2}px`;
@@ -82,17 +82,18 @@ function getWindowContent(contentType) {
                             <li class="responsibility">Implemented key user functionalities, including secure authentication, profile management, leaderboard ranking, and search using Ionic for the frontend, and Node.js, Typescript, and NoSQL databases with REST APIs for the backend.</li>
                             <li class="responsibility">Collaborated in Agile design sprints (Figma), ensured 95% alignment with project software architecture.</li>
                         </ul>
+                        <img class="image" src="images/GMGO.png" alt="GM Game App">
                     </div>
 
                     <div class="experience">
                         <div class="job-title">Richmond Public Defenders, Richmond, VA — Web Dev. Intern</div>
                         <div class="date-range">JUN 2021 - AUG 2021</div>
-                        <img class="image" src="images/public_defenders.png" alt="Redesigned Public Defenders website" onclick="window.open('https://vadefenders.org/richmond/index.html', '_blank')">
                         <ul class="responsibilities">
                             <li class="responsibility">Developed a redesigned, mobile-responsive website using Bootstrap, boosting web traffic by 65% year-over-year.</li>
                             <li class="responsibility">Transformed a 25+ page client handbook into an interactive legal resource hub with visual diagrams and explainer videos, improving information accessibility and reducing average user time spent finding resources by 70%.</li>
                             <li class="responsibility">Streamlined the hiring process by implementing PHP-based web forms, automating 90% of hiring and data collection processes, increasing job application completion rates by 45%, and eliminating redirects to external hiring pages.</li>
                         </ul>
+                        <img class="image" src="images/public_defenders.png" alt="Redesigned Public Defenders website" onclick="window.open('https://vadefenders.org/richmond/index.html', '_blank')">
                     </div>
 
                     <div class="experience">
